@@ -1,0 +1,33 @@
+---
+const servicios = await Astro.glob("../pages/servicios/*.md");
+---
+
+<div class="bg-accent-dark">
+  <div class="container py-28">
+    <small class="sm:text-base text-sm text-light">Especialidades</small>
+    <h2
+      class="xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl text-3xl font-extrabold text-accent sm:mb-20 mb-14 mt-6"
+    >
+      Nuestros Servicios
+    </h2>
+    <div class="w-full grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:gap-20 gap-10">
+      {
+        servicios.map((servicio) => (
+          <article class="flex flex-col items-start gap-4 py-10 px-8 bg-gradient-to-br from-accent-dark via-dark to-accent-dark rounded-3xl">
+            <img
+              class="h-20 w-auto"
+              src={"../img/" + servicio.frontmatter.src}
+            />
+            <h3 class="xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-xl font-semibold text-light">
+              {servicio.frontmatter.title}
+            </h3>
+            <p class="max-w-prose sm:text-base text-sm text-grey-light font-thin overt">
+              {servicio.rawContent}
+            </p>
+            {/*<a href={post.url}>Read more</a>*/}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</div>

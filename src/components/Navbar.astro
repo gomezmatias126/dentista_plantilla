@@ -1,0 +1,178 @@
+---
+const nav_item = ["servicios", "nosotros", "contacto"];
+let barrita = "/";
+---
+
+<header
+  id="header_navbar"
+  class="w-full h-20 flex items-center justify-center fixed z-50 top-0 transition-all text-grey"
+>
+  <nav class="container static">
+    <ul
+      class="flex flex-row items-center [&>div>a]:text-base justify-between static"
+    >
+      <li class="lg:flex-grow lg:basis-0">
+        <a href="/" class="flex items-center gap-1">
+          <svg
+            class="h-8 w-auto"
+            width="55"
+            height="60"
+            viewBox="0 0 55 60"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.73733 23.2164C1.73698 23.2155 1.73663 23.2145 1.73627 23.2136C1.73662 23.2145 1.73698 23.2155 1.73733 23.2164ZM1.73733 23.2164C1.73734 23.2164 1.73734 23.2164 1.73734 23.2164L2.19727 23.0404L1.73733 23.2164ZM9.341 2.09508C1.86602 5.32026 -1.44103 14.6431 1.66687 23.0293L1.65715 23.0521L1.75061 23.2537L2.73378 25.3743C6.04149 32.5085 8.53468 39.9872 10.167 47.6709L11.7271 55.0151L11.7292 55.0251L11.7318 55.0351C12.3285 57.3687 14.4367 59 16.8503 59C19.4426 59 21.6535 57.1243 22.0656 54.5705L24.265 40.9392C24.4848 39.5772 25.6649 38.5736 27.0525 38.5736C28.44 38.5736 29.6202 39.5772 29.8399 40.9392L32.0393 54.5705C32.4514 57.1243 34.6623 59 37.2546 59C39.6682 59 41.7763 57.3687 42.3731 55.0351L42.3756 55.0251L42.3778 55.0151L43.9379 47.6709C45.5702 39.9872 48.0634 32.5085 51.3711 25.3743L52.3543 23.2537L52.4476 23.0523L52.438 23.0294C55.546 14.6433 52.2389 5.32028 44.7639 2.09508C41.1975 0.556291 37.3372 0.69627 33.8991 2.15739C29.9336 3.84261 24.1712 3.8426 20.2057 2.15738C16.7676 0.696277 12.9074 0.556307 9.341 2.09508Z"
+              fill="url(#paint0_linear_4_44)"
+              stroke="#44C6E9"></path>
+            <defs>
+              <linearGradient
+                id="paint0_linear_4_44"
+                x1="7.89767"
+                y1="1.5"
+                x2="38.9282"
+                y2="56.4365"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#F0F6F9"></stop>
+                <stop offset="1" stop-color="#CDDFF2"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="font-medium sm:text-xl text-lg text-grey"> Odontológia Integral</span>
+        </a>
+      </li>
+      <li
+        id="item_navbar_links"
+        class="lista_item_navbar lg:flex lg:h-auto h-screen hidden bg-light-celeste/[0.95] lg:flex-row justify-center absolute lg:static lg:w-auto lg:bg-transparent lg:top-0 top-full left-0 w-full flex-col items-center sm:font-medium font-bold gap-10 lg:text-sm text-grey text-4xl capitalize transition-all"
+      >
+        {
+          nav_item.map((item) => (
+            <a
+              class="hover:scale-105 hover:text-celeste"
+              href={item === "servicios" ? "/#" + item : barrita + item}
+            >
+              {item}
+            </a>
+          ))
+        }
+        <a
+          href="/contacto"
+          class="visible lg:hidden bg-accent px-10 py-3 text-dark-blue font-medium rounded-3xl btn_animacion"
+          >Saca tu Turno</a
+        >
+      </li>
+      <li class="lg:flex hidden lg:flex-grow lg:basis-0 lg:justify-end">
+        <a
+          href="/contacto"
+          class="bg-accent px-10 py-3 text-dark-blue font-medium rounded-3xl btn_animacion"
+          >Saca tu Turno</a
+        >
+      </li>
+      <li class="lg:hidden visible h-auto flex">
+        <button
+          id="btn_toggle_navbar"
+          class="lg:hidden visible"
+          aria-roledescription="Boton para Abrir Menu de Navegación"
+          name="Boton para Abrir Menu de Navegación"
+        >
+          <div id="btn_toggle_navbar_svg_close" class="hidden">
+            <svg
+              class="[&>path]:fill-grey"
+              width="41"
+              height="41"
+              viewBox="0 0 41 41"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M35.9996 0.5L20.9961 15.5L5.99609 0.5L0.996094 5.5L15.9961 20.5L0.996094 35.5L5.99609 40.5L20.9961 25.5L35.9996 40.5L40.9996 35.5L25.9996 20.5L40.9996 5.5L35.9996 0.5Z"></path>
+            </svg>
+          </div>
+          <div id="btn_toggle_navbar_svg_open" class="visible">
+            <svg
+              class="[&>path]:fill-grey"
+              width="40"
+              height="21"
+              viewBox="0 0 40 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M0 0H40V3H0V0Z"></path>
+              <path d="M20 9H40V12H20V9Z"></path>
+              <path d="M10 18H40V21H10V18Z"></path>
+            </svg>
+          </div>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const btn_toggle_navbar = document.getElementById("btn_toggle_navbar");
+  const item_navbar_links = document.getElementById("item_navbar_links");
+  const btn_toggle_navbar_svg_close = document.getElementById(
+    "btn_toggle_navbar_svg_close"
+  );
+  const btn_toggle_navbar_svg_open = document.getElementById(
+    "btn_toggle_navbar_svg_open"
+  );
+  const header_navbar = document.getElementById("header_navbar");
+  let prevScrollpos = window.scrollY;
+
+  function toggleMenu() {
+    btn_toggle_navbar_svg_close.classList.toggle("hidden");
+    btn_toggle_navbar_svg_open.classList.toggle("hidden");
+    item_navbar_links.classList.toggle("hidden");
+    item_navbar_links.classList.toggle("flex");
+    if (item_navbar_links.classList.contains("hidden") === false) {
+      header_navbar.classList.add("bg-light-celeste");
+      item_navbar_links.addEventListener("click", toggleMenu);
+    } else {
+      if (window.scrollY <= 100) header_navbar.classList.remove("bg-light-celeste");
+      item_navbar_links.removeEventListener("click", toggleMenu);
+    }
+  }
+  btn_toggle_navbar.addEventListener("click", toggleMenu);
+
+  window.onscroll = function () {
+    let currentScrollPos = window.scrollY;
+    if (btn_toggle_navbar_svg_close.classList.contains("hidden") === false)
+      return;
+    if (window.scrollY >= 100) {
+      header_navbar.classList.add("bg-light-celeste");
+    } else {
+      if (item_navbar_links.classList.contains("hidden") !== false) {
+        header_navbar.classList.remove("bg-light-celeste");
+      }
+    }
+    if (prevScrollpos > currentScrollPos) {
+      header_navbar.style.top = "0";
+    } else {
+      header_navbar.style.top = "-5rem";
+    }
+    prevScrollpos = currentScrollPos;
+  };
+</script>
+
+<style>
+  @media (max-width: 768px) {
+    .lista_item_navbar {
+      height: calc(100vh - 5rem);
+    }
+  }
+  .btn_animacion {
+    transition: scale 750ms, background-color 1000ms, color 1000ms,
+      font-weight 500ms;
+    will-change: scale, background-color, color, font-weight;
+  }
+
+  .btn_animacion:hover,
+  .btn_animacion:focus {
+    font-weight: normal;
+    color: #fcfeff;
+    background-color: #2977D5;
+    scale: 1.03;
+  }
+</style>

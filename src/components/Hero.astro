@@ -1,0 +1,35 @@
+---
+---
+
+<div class="container overflow-hidden">
+  <div class="min-h-screen flex lg:flex-row flex-col-reverse items-center lg:gap-10 gap-7 lg:my-0 my-24">
+    <div class="lg:w-6/12 w-full flex flex-col lg:gap-10 sm:gap-6 gap-4 items-start">
+      <!-- <small class="sm:text-base text-sm text-accent-dark">En Córdoba Capital</small> -->
+      <h1 class="xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl text-4xl font-black">
+        Una excelente experiencia
+        <span class="text-accent">Odontológica</span>
+      </h1>
+      <p class="sm:text-lg text-base text-grey font-extralight">Lorem ipsum dolor sit amet consectetur adipiscing elit molestie, rhoncus luctus arcu ut eros augue. Eu commodo laoreet parturient quam purus magna pretium luctus.</p>
+      <div class="flex items-center sm:gap-14 gap-5">
+        <a href="" class="btn px-5 py-3 sm:text-lg text-base">Saca tu turno</a>
+        <a href="" class="opacity-90 border-b border-grey-text text-grey sm:text-lg text-base">Nuestros Servicios</a>
+      </div>
+    </div>
+    <div class="relative z-30 container_image_hero lg:w-6/12 w-full flex items-center justify-center before:bg-gradient-to-tl before:from-accent before:to-accent-dark before:z-20">
+      <img src="img/hero.avif" alt="" class="relative z-30 lg:w-9/12 sm:w-7/12 w-9/12 rounded-xl">
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .container_image_hero::before{
+    content: "";
+    position: absolute;
+    height: 95%;
+    width:auto;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    z-index: 28;
+  }
+</style>

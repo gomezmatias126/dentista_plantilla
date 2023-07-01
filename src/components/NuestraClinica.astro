@@ -1,0 +1,101 @@
+---
+import carousel1 from "/img/carousel1.avif";
+import carousel2 from "/img/carousel2.avif";
+import carousel3 from "/img/carousel3.avif";
+import carousel4 from "/img/carousel4.avif";
+---
+
+<div class="py-24">
+  <div class="container">
+    <small class="sm:text-base text-sm text-accent-dark">Las Instalaciones</small>
+    <h2
+      class="xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl text-4xl font-extrabold mt-4 mb-7 bg-gradient-to-br from-accent-dark/[90%] to-accent/[100%] bg-clip-text text-transparent"
+    >
+      Nuestra Clinica
+    </h2>
+  </div>
+  <div draggable="false" id="carousel" class="relative w-full h-auto xl:aspect-[12/4] lg:aspect-[10/4] md:aspect-[10/7] sm:aspect-[5/4] aspect-[5/6] overflow-hidden cursor-grab">
+    <div
+      draggable="false"
+      id="image-track"
+      data-mouse-down-at="0" 
+      data-prev-percentage="0"
+      class="absolute flex min-w-max gap-4 h-full [&>img]:h-full [&>img]:w-auto [&>img]:object-cover [&>img]:aspect-[9/10] [&>img]:rounded-2xl select-none"
+    >
+      <img class="image" src={carousel1} alt="" draggable="false"/>
+      <img class="image" src={carousel2} alt="" draggable="false"/>
+      <img class="image" src={carousel3} alt="" draggable="false"/>
+      <img class="image" src={carousel4} alt="" draggable="false"/>
+    </div>
+  </div>
+</div>
+
+<script>
+  const track = document.getElementById("image-track");
+  const carousel = document.getElementById("carousel");
+  
+  const handleOnDown = (e) => (track.dataset.mouseDownAt = e.clientX);
+
+  const handleOnUp = () => {
+    track.dataset.mouseDownAt = "0";
+    track.dataset.prevPercentage = track.dataset.percentage;
+  };
+
+  const handleOnMove = (e) => {
+    if (track.dataset.mouseDownAt === "0") return;
+
+    const mouseDelta = parseFloat(track.dataset.mouseDownAt) - e.clientX,
+      maxDelta = window.innerWidth / 2;
+
+    const percentage = (mouseDelta / maxDelta) * -100,
+      nextPercentageUnconstrained =
+        parseFloat(track.dataset.prevPercentage) + percentage,
+      nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+
+    track.dataset.percentage = nextPercentage;
+
+    track.animate(
+      {
+        transform: `translate(${nextPercentage}%, 0%)`,
+      },
+      { duration: 30000, fill: "forwards" }
+    );
+
+    for (const image of track.getElementsByClassName("image")) {
+      image.animate(
+        {
+          objectPosition: `${100 + nextPercentage}% center`,
+        },
+        { duration: 30000, fill: "forwards" }
+      );
+    }
+  };
+
+  /* -- Had to add extra lines for touch events -- */
+
+  carousel.onmousedown = (e) => handleOnDown(e);
+
+  carousel.ontouchstart = (e) => handleOnDown(e.touches[0]);
+
+  carousel.onmouseup = (e) => handleOnUp(e);
+
+  carousel.ontouchend = (e) => handleOnUp(e.touches[0]);
+
+  carousel.onmousemove = (e) => handleOnMove(e);
+
+  carousel.ontouchmove = (e) => handleOnMove(e.touches[0]);
+</script>
+
+
+<style>
+  #image-track > img{
+    object-position: 100% center;
+    will-change: object-position;
+  }
+  #image-track {
+    will-change: transform;
+    left: 50%;
+    top: 0%;
+    transform: translate(0%, 0%); 
+  }
+</style>

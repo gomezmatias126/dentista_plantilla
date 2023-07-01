@@ -1,0 +1,55 @@
+---
+let testimonios = ["Maria Paz", "Silvia Rios", "Matias Gomez", "Mariano Gonzalez", "Esteban Quito", "Roman Riquelme"];
+let estrellas = 5;
+---
+
+<div class="container py-28">
+  <small class="sm:text-base text-sm text-light">Testimonios</small>
+  <h2
+    class="xl:text-7xl lg:text-6xl md:text-5xl sm:text-4xl text-3xl font-extrabold text-accent sm:mb-20 mb-14 mt-6"
+  >
+    Lo que opinan nuestros Pacientes
+  </h2>
+  <div
+    class="w-full grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 sm:gap-20 gap-10"
+  >
+    {
+      testimonios.map((item) => (
+        <article class="sm:odd:visible sm:odd:block odd:hidden bg-gradient-to-tr from-light-celeste via-grey-light to-light-celeste py-10 px-8 rounded-3xl">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-dark font-normal sm:text-2xl text-xl">{item}</h3>
+            <div class="flex gap-4 items-center">
+              {estrellas >= 1 && <span class="estrella bg-accent w-5 h-5" />}
+              {estrellas >= 2 && <span class="estrella bg-grey w-5 h-5" />}
+              {estrellas >= 3 && <span class="estrella bg-dark w-5 h-5" />}
+              {estrellas >= 4 && <span class="estrella bg-dark-blue w-5 h-5" />}
+              {estrellas >= 5 && <span class="estrella bg-accent-dark w-5 h-5" />}
+            </div>
+          </div>
+          <p class="text-grey font-extralight sm:text-base text-sm">
+            Lorem ipsum dolor sit amet consectetur adipiscing elit conubia,
+            massa facilisi lectus ullamcorper ridiculus potenti iaculis nibh,
+            interdum faucibus ad diam vivamus vehicula fames.
+          </p>
+        </article>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .estrella {
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+  }
+</style>
